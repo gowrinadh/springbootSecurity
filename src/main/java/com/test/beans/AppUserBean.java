@@ -5,9 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class AppUserBean implements Serializable {
 
 	/**
@@ -23,6 +20,17 @@ public class AppUserBean implements Serializable {
 
 	@Transient
 	private String token;
+
+	public AppUserBean() {
+		super();
+	}
+
+	public AppUserBean(@NotNull String userName, @NotNull String password, String token) {
+		super();
+		this.userName = userName;
+		this.password = password;
+		this.token = token;
+	}
 
 	public String getToken() {
 		return token;
@@ -40,8 +48,6 @@ public class AppUserBean implements Serializable {
 		this.userName = userName;
 	}
 
-	@JsonIgnore
-	@JsonProperty(value = "user_password")
 	public String getPassword() {
 		return password;
 	}

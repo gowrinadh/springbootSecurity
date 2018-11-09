@@ -1,5 +1,7 @@
 package com.test.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -47,5 +49,10 @@ public class UserController {
 	public Response signOut(HttpServletRequest request, HttpServletResponse response) {
 		// clearing the Cookies and invalidation the session ( logout )
 		return appUserService.signoutService(request, response);
+	}
+	
+	@GetMapping("/users")
+	public List<ApplicationUser> getUsers(){
+		return appUserService.getAllUserService();
 	}
 }
